@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import path from "path";
+//llamar a la conecion a la bd (ejecutar el archivo database)
+import "./database";
 
 //crear una instancia de express
 const app = express();
@@ -24,6 +26,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.get("/prueba", (reg, res) => {
     res.send("esto es una prueba de peticion get");
 });
-app.get("/prueba", (reg, res) => {
+app.delete("/prueba", (reg, res) => {
     res.send("aqui tendría que borrar un dato");
 });
