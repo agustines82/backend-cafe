@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import path from "path";
+import productoRouter from "./routes/productos.routes";
 //llamar a la conecion a la bd (ejecutar el archivo database)
 import "./database";
 
@@ -23,9 +24,4 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "../public")));
 
 //rutas
-app.get("/prueba", (reg, res) => {
-    res.send("esto es una prueba de peticion get");
-});
-app.delete("/prueba", (reg, res) => {
-    res.send("aqui tendría que borrar un dato");
-});
+app.use("/apicafe", productoRouter);
