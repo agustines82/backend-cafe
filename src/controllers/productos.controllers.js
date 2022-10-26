@@ -29,3 +29,18 @@ export const crearProducto = async (req, res) => {
         });
     }
 };
+export const obtenerProducto = async (req, res) => {
+    try {
+        //extraer id de la ruta
+        console.log(req.params.id);
+        //buscar en la BD el producto que tenga ese id
+        const productoBuscado = await Producto.findById(req.params.id);
+        //responder al frontend con el objeto encontrado
+        res.status(200).json(productoBuscado);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: "Error al buscar el producto",
+        });
+    }
+};
