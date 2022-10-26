@@ -60,3 +60,18 @@ export const editarProducto = async (req, res) => {
         });
     }
 };
+export const borrarProducto = async (req, res) => {
+    try {
+        //extraer id de la ruta  y luego solicitar a la BD borrar el producto
+        await Producto.findByIdAndDelete(req.params.id);
+        //respondemos al FE
+        res.status(200).json({
+            mensaje: "Producto borrado correctamente",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: "Error al intentar borrar el producto",
+        });
+    }
+};
