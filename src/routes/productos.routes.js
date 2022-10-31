@@ -28,9 +28,13 @@ router
             check("imagen")
                 .notEmpty()
                 .withMessage("El link de la imagen es un dato obligatorio")
-                .isLength({ max: 1000 })
-                .withMessage("El link de la imagen no puede superar los 1000 caracteres"),
-            check("categoria").notEmpty().withMessage("La categoria es un dato obligatorio"),
+                .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
+                .withMessage("debes ingresar una url valida"),
+            check("categoria")
+                .notEmpty()
+                .withMessage("La categoria es un dato obligatorio")
+                .isIn(["Bebida caliente", "Bebida fria", "Dulce", "Salado"])
+                .withMessage("Debe ingresar una categoría valida"),
         ],
         crearProducto
     );
@@ -60,9 +64,13 @@ router
             check("imagen")
                 .notEmpty()
                 .withMessage("El link de la imagen es un dato obligatorio")
-                .isLength({ max: 1000 })
-                .withMessage("El link de la imagen no puede superar los 1000 caracteres"),
-            check("categoria").notEmpty().withMessage("La categoria es un dato obligatorio"),
+                .matches(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/)
+                .withMessage("debes ingresar una url valida"),
+            check("categoria")
+                .notEmpty()
+                .withMessage("La categoria es un dato obligatorio")
+                .isIn(["Bebida caliente", "Bebida fria", "Dulce", "Salado"])
+                .withMessage("Debe ingresar una categoría valida"),
         ],
         editarProducto
     )
