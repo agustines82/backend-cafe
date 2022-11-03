@@ -28,7 +28,7 @@ export const crearUsuario = async (req, res) => {
         console.log(req.body);
         //tomar el body y validarlo
         //guardar el usuario en la BD
-        const usuarioNuevo = new Producto(req.body);
+        const usuarioNuevo = new Usuario(req.body);
         await usuarioNuevo.save();
         res.status(201).json({
             mensaje: "El usuario fue creado correctamente",
@@ -40,4 +40,3 @@ export const crearUsuario = async (req, res) => {
         });
     }
 };
-
