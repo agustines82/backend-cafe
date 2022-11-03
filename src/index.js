@@ -3,13 +3,14 @@ import cors from "cors";
 import morgan from "morgan";
 import path from "path";
 import productoRouter from "./routes/productos.routes";
+import usuarioRouter from "./routes/usuarios.routes";
 //llamar a la conecion a la bd (ejecutar el archivo database)
 import "./database";
 
 //crear una instancia de express
 const app = express();
 //configurar un puerto
-app.set("port", process.env.PORT || 4001);
+app.set("port", process.env.PORT || 4000);
 
 app.listen(app.get("port"), () => {
     console.log("estoy en el puerto " + app.get("port"));
@@ -25,3 +26,4 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 //rutas
 app.use("/apicafe", productoRouter);
+app.use("/apicafe", usuarioRouter);
