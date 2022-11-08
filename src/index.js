@@ -6,6 +6,9 @@ import productoRouter from "./routes/productos.routes";
 import usuarioRouter from "./routes/usuarios.routes";
 //llamar a la conecion a la bd (ejecutar el archivo database)
 import "./database";
+import * as dotenv from "dotenv";
+
+dotenv.config(); //para usar variables de entorno
 
 //crear una instancia de express
 const app = express();
@@ -26,4 +29,4 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 //rutas
 app.use("/apicafe", productoRouter);
-app.use("/apicafe", usuarioRouter);
+app.use("/apicafe/auth", usuarioRouter);
